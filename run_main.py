@@ -119,7 +119,7 @@ import sys
 
 
 argpath = 'configs/GRIT/zinc-GRIT.yaml'
-repeat = 1
+repeat = 2
 
 def parse_args():
     r"""
@@ -148,7 +148,7 @@ def parse_args():
     extra_args [
         'wandb.use False',
         'accelerator cuda',
-        'optim.max_epoch 5',
+        'optim.max_epoch 2',
         'dataset.dir /data/beng/datasets',
     ]
 
