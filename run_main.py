@@ -118,8 +118,10 @@ import argparse
 import sys
 
 
-argpath = 'configs/GRIT/zinc-GRIT.yaml'
-repeat = 2
+argpath = 'configs/GRIT/pcqm4mv2-GRIT-RRWP.yaml'
+repeat = 1
+if os.path.exists('DRewGRIT'):
+    os.chdir('./DRewGRIT')
 
 def parse_args():
     r"""
@@ -141,15 +143,16 @@ def parse_args():
     )
     parser.add_argument('opts', help='See graphgym/config.py for all options',
                         default=None, nargs=argparse.REMAINDER)
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(1)
+    # if len(sys.argv) == 1:
+    #     parser.print_help()
+    #     sys.exit(1)
 
-    extra_args [
+    extra_args = [
         'wandb.use False',
         'accelerator cuda',
         'optim.max_epoch 2',
         'dataset.dir /data/beng/datasets',
+        'train.batch_size 1',
     ]
 
     extra_args = ' '.join(extra_args)
