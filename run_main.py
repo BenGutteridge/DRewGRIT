@@ -2,6 +2,7 @@ import datetime
 import os
 import torch
 import logging
+import socket
 
 import grit  # noqa, register custom modules
 from grit.optimizer.extra_optimizers import ExtendedSchedulerConfig
@@ -158,7 +159,7 @@ def parse_args():
         # 'accelerator cuda',
         'accelerator cuda',
         # 'optim.max_epoch 300',
-        'dataset.dir /data/beng/datasets',
+        'dataset.dir datasets',
         # 'train.batch_size 1',
         'train.auto_resume True',
         'train.ckpt_period 10',
@@ -184,6 +185,12 @@ if __name__ == '__main__':
     # Set Pytorch environment
     torch.set_num_threads(cfg.num_threads)
     # Repeat for multiple experiment runs
+    hostname = socket.gethostname()
+    print('Hostname: %s' % hostname)
+    if 'cdt' in hostname: 
+        dataset_dir = '/data/beng/datasets'
+        cfg.dataset.dir = dataset_dir
+        print('On CDT computer, dataset.dir set to %s' % dataset_dir)
     for run_id, seed, split_index in zip(*run_loop_settings()):
         # Set configurations for each run
         custom_set_run_dir(cfg, run_id)

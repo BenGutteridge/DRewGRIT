@@ -33,6 +33,22 @@ pip install setuptools==59.5.0
 ### mlflow server --backend-store-uri mlruns --port 5000
 
 ```
+### Env setup on M1 Macbook
+```bash
+conda create -n grit python=3.9
+conda install pytorch=1.12.1 torchvision torchaudio -c pytorch -c nvidia   
+conda install pyg=2.2.0 -c pyg -c conda-forge
+pip install torchmetrics==0.9.1
+pip install ogb
+pip install tensorboardX
+pip install yacs
+pip install opt_einsum
+pip install graphgym
+pip install pytorch-lightning
+pip install setuptools==59.5.0
+
+```
+
 
 ### Running GRIT
 ```bash
