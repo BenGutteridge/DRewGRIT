@@ -15,5 +15,8 @@ def dataset_cfg(cfg):
     # VOC/COCO Superpixels dataset version based on SLIC compactness parameter.
     cfg.dataset.slic_compactness = 10
 
+    # ratio for pcqm subset of entire dataset
+    cfg.dataset.pcqm4_subset_ratio = 0.1
+
     # ----- PE Transform ---------------
     cfg.dataset.pe_transform_on_the_fly = False

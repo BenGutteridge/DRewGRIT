@@ -147,12 +147,22 @@ def parse_args():
     #     parser.print_help()
     #     sys.exit(1)
 
+    d = 32
     extra_args = [
+        'posenc_RRWP.enable False',
+        'dataset.name PCQM4Mv2-subset',
+        'dataset.pcqm4_subset_ratio 0.001',
         'wandb.use False',
+        'gt.dim_hidden %d' % d,
+        'gnn.dim_inner %d' % d,
+        # 'accelerator cuda',
         'accelerator cuda',
-        'optim.max_epoch 2',
+        # 'optim.max_epoch 300',
         'dataset.dir /data/beng/datasets',
-        'train.batch_size 1',
+        # 'train.batch_size 1',
+        'train.auto_resume True',
+        'train.ckpt_period 10',
+        # 'tensorboard_each_run True',
     ]
 
     extra_args = ' '.join(extra_args)
